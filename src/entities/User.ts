@@ -3,13 +3,13 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 @Entity("users")
 export class User {
   @PrimaryGeneratedColumn("uuid")
-  id: number;
+  id: string;
 
   @Column({ default: Date.now() })
-  createdDate: string;
+  createdAt: string;
 
   @Column({ default: Date.now() })
-  updatedDate: string;
+  updatedAt: string;
 
   @Column({ nullable: false })
   fullName: string;
@@ -30,7 +30,7 @@ export class User {
   phone: string;
 
   @Column()
-  adress: string;
+  address: string;
 
   @Column()
   observations: string;
