@@ -1,11 +1,10 @@
 import { DeleteResult } from "typeorm";
-import { User } from "../../entities/User";
 
 interface IUser {
   id: string;
-  createdAt: string;
-  updatedAt: string;
-  fullname: string;
+  createdAt: Date;
+  updatedAt: Date;
+  fullName: string;
   cpf: string;
   password: string;
   surname: string;
@@ -19,8 +18,9 @@ interface IUser {
 
 interface IUserRepo {
   saveUser: (user: IUser) => Promise<IUser>;
-  findUsers: () => Promise<User[]>;
-  findUserByCpf: (cpf: string) => Promise<User>;
+  findUsers: () => Promise<IUser[]>;
+  findUserByCpf: (cpf: string) => Promise<IUser>;
+  findByUuid: (uuid: string) => Promise<IUser>;
   deleteUser: (user: IUser) => Promise<DeleteResult>;
 }
 

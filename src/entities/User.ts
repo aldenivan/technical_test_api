@@ -5,34 +5,34 @@ export class User {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column({ default: Date.now() })
-  createdAt: string;
+  @Column({ default: new Date() })
+  createdAt: Date;
 
-  @Column({ default: Date.now() })
-  updatedAt: string;
+  @Column({ default: new Date() })
+  updatedAt: Date;
 
-  @Column({ nullable: false })
+  @Column()
   fullName: string;
 
-  @Column({ unique: true, nullable: false })
+  @Column({ unique: true })
   cpf: string;
 
   @Column()
   password: string;
 
-  @Column()
+  @Column({ nullable: true })
   surname: string;
 
-  @Column({ nullable: false })
+  @Column()
   genre: string;
 
-  @Column()
+  @Column({ nullable: true })
   phone: string;
 
-  @Column()
+  @Column({ nullable: true })
   address: string;
 
-  @Column()
+  @Column({ nullable: true })
   observations: string;
 
   @Column({ default: false })

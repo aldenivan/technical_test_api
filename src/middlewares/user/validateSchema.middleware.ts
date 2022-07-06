@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from "express";
 import { AnySchema } from "yup";
 
-const validateSchema =
-  (schema: AnySchema) =>
+const validateShape =
+  (shape: AnySchema) =>
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const validated = await schema.validate(req.body, {
+      const validated = await shape.validate(req.body, {
         abortEarly: false,
         stripUnknown: true,
       });
@@ -18,4 +18,4 @@ const validateSchema =
     }
   };
 
-export default validateSchema;
+export default validateShape;

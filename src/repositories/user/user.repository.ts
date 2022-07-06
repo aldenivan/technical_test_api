@@ -13,9 +13,12 @@ class UserRepository implements IUserRepo {
   findUsers = async () => await this.ormRepository.find();
   findUserByCpf = async (cpf: string) =>
     await this.ormRepository.findOne({ cpf: cpf });
+  findByUuid = async (uuid: string) => {
+    return await this.ormRepository.findOne({ where: { uuid } });
+  };
   deleteUser = async (user: IUser) => {
     return await this.ormRepository.delete(user);
   };
 }
 
-export { UserRepository, IUser };
+export { IUser, UserRepository };
