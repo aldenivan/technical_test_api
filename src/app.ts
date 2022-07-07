@@ -6,7 +6,7 @@ import { routerUser } from "./routes";
 const app = express();
 
 app.use(json());
-app.use("/users", routerUser);
+app.use("/api", routerUser);
 // app.use((err: any, _: Request, res: Response, __: NextFunction) => {
 //   return handleError(err, res);
 // });
