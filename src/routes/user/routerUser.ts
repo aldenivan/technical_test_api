@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import {
   deleteUserController,
+  getUserProfileController,
   getUsersController,
   loginUserController,
   registerUserController,
@@ -16,18 +17,24 @@ import { loginUserShape, schemaRegisterUser } from "../../schemas";
 
 const routerUser = Router();
 
-routerUser.get("/", authenticatedUser, getUsersController);
+routerUser.get("/users", authenticatedUser, getUsersController);
+
+routerUser.get("/users/profile", authenticatedUser, getUserProfileController);
 
 routerUser.post(
-  "/register",
+  "/users/register",
   validateShape(schemaRegisterUser),
   registerUserController
 );
 
-routerUser.post("/login", validateShape(loginUserShape), loginUserController);
+routerUser.post(
+  "/users/login",
+  validateShape(loginUserShape),
+  loginUserController
+);
 
-routerUser.patch("/update", authenticatedUser, updateUserController);
+routerUser.patch("/users/update", authenticatedUser, updateUserController);
 
-routerUser.delete("/delete", authenticatedUser, deleteUserController);
+routerUser.delete("/users/delete", authenticatedUser, deleteUserController);
 
 export default routerUser;
