@@ -8,6 +8,14 @@ const updateUserService = async (req: Request) => {
     ...req.body,
   };
 
+  if (req.body?.cpf) {
+    const userExist = await new UserRepository().findUserByCpf(req.body.cpf);
+
+    if (userExist) {
+      return "alredy user";
+    }
+  }
+
   if (update.isAdm !== undefined) {
     return undefined;
   }
